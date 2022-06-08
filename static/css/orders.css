@@ -1,0 +1,9 @@
+.clear{
+    clear: both;
+}
+.order-section{
+    margin: 20px;
+    width: auto;
+    height: auto;
+    /* background-color: red; */
+}

@@ -1,0 +1,84 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: arial,sans-serif;
+}
+.checkoutform label{
+    font-size: 14px ;
+}
+.checkoutform input{
+    font-size: 16px ;
+    color: midnightblue;
+    caret-color: blue;
+}
+
+input:focus::placeholder {
+    color: midnightblue;
+    
+}
+
+/* .items h2{
+   text-align: left;
+   margin-left: 5%;
+}
+
+.items ul li  img{
+    width: 10%;
+    height: 10%;
+}
+
+.items ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    display: inline-flex;
+}
+.quantity{
+    display: inline-flex;
+}
+.quantity label{
+    font-size: 17px;
+}
+.quantity form input{
+    padding: 0px 5px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.items ul li form .remove-btn{
+    padding:5px 10px;
+    background-color: rgb(65, 55, 55);
+    cursor: pointer;
+    color: aliceblue;
+    font-size:15px;    
+    /* margin-top:80px; 
+    border-radius: 5px;
+    border: transparent;
+    transition:all 1s;
+    display: inline;
+    float: right;
+    margin-top: -60px;
+}
+
+.items ul li form .remove-btn:hover{
+    background-color: black;
+}
+.checkoutform{
+    margin-top: 5%;
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    
+}
+.total{
+    margin-right: 100px;
+    float: right;
+}
+.total h3{
+    color: red;
+}
+.total span{
+    color: black;
+} */

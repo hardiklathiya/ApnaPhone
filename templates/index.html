@@ -1,0 +1,419 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{%static 'css/mystyle.css'%}">
+  <title>Apna Phone | Home</title>
+  <link rel="stylesheet" href="{%static 'css/all.min.css'%}">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body>
+  {%include 'header.html'%}
+  <div class="clear"></div>
+  {%include 'img-slider.html'%}
+  <div class="clear"></div>
+  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+  
+
+  <div class="home-body">
+    <div class="ad1 ">
+      <img class="ad1-img" src="{%static 'images/ad1.jpg'%}">
+      <h1 class="ad1-name">V23e<span>5G</span></h1>
+      <p class="ad1-des">Delight every moment</p>
+    </div>
+    <div class="ad2 ">
+      <img class="ad2-img" src="{%static 'images/mobile ad-2.jpg'%}">
+      <h1 class="ad1-name">T1<span>5G</span></h1>
+      <p class="ad1-des mt-2">Get.Set.Turbo</p>
+    </div>
+    <div class="mt-5 mb-5">
+      <center>
+        <h1 class="brand-title">Shop By Brands</h1>
+      </center>
+    </div>
+    <div class="category">
+      {%for i in allcategory%}
+      <div class="brand-list">
+        <a href="mobile?category_id={{i.id}}" target="_blank">
+          <img src="../pimage/{{i.categoryimage}}" width="80px" height="50px"></a>
+
+      </div>
+      {%endfor%}
+    </div>
+    <div class="survey" id="myBtn">
+      <img class="survey-img"   src="{%static 'images/survey.gif'%}" >
+    </div>
+<!-- The Modal -->
+<div id="myModal" class="modal-survey ">
+
+  <!-- Modal content -->
+  <div class="modal-container ">
+	  <span class="close close-btn ">&times;</span>
+	  <h5 class="mt-2 mb-2">Tell us Your smartphone preference</h5>
+    <form method="POST" action="../survey">
+		{%csrf_token%}
+		<div class="form-group mb-2">
+		  <label for="name">Name</label>
+		  <input type="text"class="form-control " id="name" placeholder="Enter Your fullname">
+		  {% comment %} <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> {% endcomment %}
+		</div>
+		
+		<div class="form-group mb-2">
+		  <label for="email">Email</label>
+		  <input type="email" class="form-control " required id="email" placeholder="Enter your email">
+		</div>
+		<div class="form-group mb-2">
+		  <label for="textfield">Tell us something</label>
+		  <input type="text" class="form-control " id="textfield"maxlength="100" placeholder="Share with us something.....">
+		</div>
+		
+		<div id="error" style="margin:2px;color:red; "></div>
+		<button type="button" class="btn btn-primary float-end" id="survey-submit">Submit</button>
+	  </form>
+  </div>
+
+</div>
+
+    <div class="top-deals mt-5 shadow">
+      <h3 class="top-deals-title ">Top Deals on Smartphones</h3>
+      <div class="featured_products">
+        {%for i in featured%}
+        <div class="product-display">
+          <a href="productdetails?id={{i.id}}" target="_blank"><img src="pimage/{{i.productdisplay}}"></img></a>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+    <div class="pl-2 mt-5 ad3">
+      <img src="{%static 'images/mobile ad3.jpg'%}">
+    </div>
+    <div class="bestseller ">
+      <h3 class="pt-2 pb-3 bestseller-title ml-5">Bestsellers from other brands</h3>
+
+
+      <div class="container bestseller-product" style="position:relative;">
+        <div class="row">
+          {% for i in bestseller %}
+          <div class="col-md-3 mb-5 display_bestseller ">
+            <div >
+              <center>
+                <a href="productdetails?id={{i.id}}" target="_blank"><img src="pimage/{{i.bestseller_display}}" width="250px"></img></a>
+              </center>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+
+    </div>
+     <div class="most-awaited pl-2 pt-4">
+			<h3>Most Awaited Smartphone</h3>
+			<center>
+				<h1 class="fw-bold iphone-title">iPhone 13 Pro</h3>
+					<img class="pt-3 pb-5 iphone-img" src="{%static 'images/iphone 13pro.jpg'%}" width="500px"
+						height="400px">
+			</center>
+			<center><iframe width="700" height="400" src="https://www.youtube.com/embed/kV__iZuxDGE" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</center>
+		</div> 
+
+    <div class="parallax-title pt-4">
+			<center>
+				<h1 class="pb-4 ">What makes an iphone an iPhone?</h1>
+			</center>
+		</div>
+		<div class="parallax-image">
+			<img src="{%static 'images/iphone-1.jpg'%}" style="width:90%;
+	  height: 550px;  top:0;
+	  left:5%;" />
+			<div class="centered">
+				<h1 class="fw-bold ml-2">iOS 15</h1>
+				<span style="left:45%%;font-size:20px;">In touch.In the moment.</span>
+			</div>
+		</div>
+		<div class="parallax-image text">
+			<img src="{%static 'images/iphone-2.jpg'%}" style="width:90%;
+	  height: 550px;  top:0;
+	  left:5%;">
+
+			</img>
+			<div class="centered">
+				<h1 class="fw-bold ">Why Apna Phone is the best place to buy iPhone?</h1>
+				<span style="left:45%%;font-size:20px;">You can choose a payment option that works for you, pay less
+					with a trade‑in, connect your new iPhone to your carrier and get set up quickly.
+					You can also chat with a Specialist anytime.</span>
+			</div>
+		</div>
+
+		<div class="parallax-image">
+			<img src="{%static 'images/iphone-4.png'%}" style="width:90%;
+	  height: 550px;  top:0;
+	  left:5%;" />
+		</div>
+		<div class="parallax-image">
+			<img src="{%static 'images/iphone-5.jpg'%}" style="width:45%;
+			height: 550px;  top:0;
+			left:5%;" />
+			<img src="{%static 'images/iphone-3.jpg'%}" style="width:45%;
+			height: 550px;  top:0;
+			right:5%;" />
+			<div style="position:absolute;right:15%;top:5%;width:30%;height:auto;">
+				<h1 class="fw-bold">Apna Phone Arcade</h1>
+				<span style="font-size:20px;">Get 3 months of Apple Arcade free when you buy an iPhone.</span>
+			</div>
+		</div>
+		<div class="bottom">
+			
+			<h2 class="allproduct">All Products</h2>
+			<div class="container " style="position:relative;" >
+				<div class="row">
+					{% for i in page_obj %}
+					<div class="col-md-4 mb-5 mr-5">
+						<div class="card item shadow">
+
+							<a class="item-link" style="color:black;" href="productdetails?id={{i.id}}" target="_blank">
+								{%if i.is_featured%}
+								<button type="button" class="btn btn-danger">Featured</button>
+								{%endif%} 
+								{%if i.is_bestseller%}
+								<span class=" btn btn-warning">Bestseller</span>
+								{%endif%}
+
+								<center><img src="pimage/{{i.productimage1}}" width="300px" height="300px"></img>
+								</center>
+								<p class="item-name pt-4">{{i.productname}}</p>
+								<span class="item-price">₹{{i.productprice}}.00</span>&nbsp;
+								<del><span class="item-mrp">₹{{i.productmrp}}.00</span>
+								</del>
+							</a>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+    <center>
+			<div aria-label="pagination" class="pagination_area" id="pagination">
+			<ul class="pagination">
+				{% if page_obj.has_previous %}
+				<li class="page-item next">
+					<a class="page-link page-button" href="?page={{ page_obj.previous_page_number }}">
+						<i class="fa fa-angle-left" aria-hidden="true"></i>
+					</a>
+				</li>
+				{% endif %}
+				{% for i in page_obj.paginator.page_range %}
+				{% if page_obj.number == i %}
+				<li class="page-item focused "><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% else %}
+				<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% endif %}
+				{% endfor %}
+				{% if page_obj.has_next %}
+				<li class="page-item next">
+					<a class="page-link page-button" href="?page={{ page_obj.next_page_number }}">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</a>
+				</li>
+			</ul>
+			{% endif %}
+		</div>
+	</center>
+
+  </div>
+
+
+{% comment %} for contact whatsapp {% endcomment %}
+<a href=" https://wa.me/+919913177832?text=I'm%20interested%20in%20your%20products%20to%20purchase.%20Can%20You%20tell%20all%20the%20details%20of%20this%20product?"
+		style="position:fixed;bottom:2%;left:2%;z-index:1;">
+		<img src="{%static 'images/whatsapp.png'%}" style="width:50px;height:50px;margin-left:20px;">
+	</a>
+
+{%include 'footer.html'%}
+  {% comment %} scripts {% endcomment %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="{%static 'js/custom.js'%}"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  
+
+
+  <script>
+
+	$(window).scroll(function () {
+
+		// Add parallax scrolling to all images in .paralax-image container
+		$('.parallax-image').each(function () {
+			// only put top value if the window scroll has gone beyond the top of the image
+			if ($(this).offset().top < $(window).scrollTop()) {
+				// Get ammount of pixels the image is above the top of the window
+				var difference = $(window).scrollTop() - $(this).offset().top;
+				// Top value of image is set to half the amount scrolled
+				// (this gives the illusion of the image scrolling slower than the rest of the page)
+				var half = (difference / 2) + 'px',
+					transform = 'translate3d( 0, ' + half + ',0)';
+
+				$(this).find('img').css('transform', transform);
+			} else {
+				// if image is below the top of the window set top to 0
+				$(this).find('img').css('transform', 'translate3d(0,0,0)');
+			}
+		});
+	});
+   // ===== Scroll to Top ==== 
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 500) {        
+        $('#return-to-top').fadeIn(200);    
+    } else {
+        $('#return-to-top').fadeOut(200);   
+    }
+});
+$('#return-to-top').click(function() {      
+    $('body,html').animate({
+        scrollTop : 0                       
+    }, 500);
+});
+
+
+    ScrollReveal({
+      reset: false,
+      distance: '10px',
+      duration: 2000,
+      delay: 400
+    });
+
+    ScrollReveal().reveal('.live-sale', { delay: 200, origin: 'top' });
+    ScrollReveal().reveal('.ad1-img', { delay: 100, origin: 'right' });
+    ScrollReveal().reveal('.ad2-img', { delay: 100, origin: 'right' });
+    ScrollReveal().reveal('.ad1-name', { delay: 100, origin: 'left' });
+    ScrollReveal().reveal('.ad1-des', { delay: 100, origin: 'bottom' });
+    ScrollReveal().reveal('.brand-title', { delay: 100, origin: 'top' });
+    ScrollReveal().reveal('.category', { delay: 100, origin: 'left', distance: '20px' });
+    ScrollReveal().reveal('.top-deals-title', { delay: 100, origin: 'right', distance: '20px' });
+    ScrollReveal().reveal('.product-display', { delay: 100, origin: 'left', distance: '20px' });
+    ScrollReveal().reveal('.ad3', { delay: 100, origin: 'top' });
+    ScrollReveal().reveal('.bestseller-title', { delay: 100, origin: 'right' });
+    ScrollReveal().reveal('.display_bestseller', { delay: 100, origin: 'left' });
+    ScrollReveal().reveal('.iphone-title', { delay: 100, origin: 'top' });
+    ScrollReveal().reveal('.iphone-img', { delay: 100, origin: 'left' });
+    
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function () {
+			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/6242b3650bfe3f4a87702f2d/1fva8pi4g';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
+		
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+		  modal.style.display = "block";
+
+		}
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+
+		}
+
+		
+		// When the user clicks anywhere outside of the modal, close it
+		{% comment %} window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		} {% endcomment %}
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script> 
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		
+      jQuery(document).on('click', '#survey-submit', function (e) { 
+			e.preventDefault();
+			
+			 var name = $('#name').val();
+			 var email = $('#email').val();
+			 var textfield = $('#textfield').val();
+	
+			 function isEmail(email) {
+			   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			   return regex.test(email);
+			 }
+			
+			 if (name =="" | email =="" | textfield=="" )
+			 {
+				$("#error").html("<li>All the fields are mandatory</li>")
+				 
+			 }
+		
+			  else if(isEmail(email)==false){
+				$("#error").html("<li>Your email is not valid</li>");
+			   
+			 }
+		 
+		  else{
+			   $.ajax({
+			   method:"POST",
+			   headers: {'X-CSRFToken': csrftoken},
+			   url: "http://127.0.0.1:8000/survey",
+			   data: {"name":name,     
+					   "email":email,
+					   "textfield":textfield,
+					  
+					   },
+						success:function(){
+						swal("Congratulations!!", "Thank you for sharing your smartphone preference with us.","success").then(()=>{
+						  window.location.href='http://127.0.0.1:8000/'
+						});
+					  }
+			  
+		 });
+		 
+		} 
+		
+		});
+		 
+	</script>
+</body>
+
+</html>

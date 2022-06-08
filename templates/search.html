@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Apna Phone -{{search}}</title>
+	{% comment %} <link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" /> {% endcomment %}
+	<meta name="keywords"
+		content="Mobilestore iphone web template, Android web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	<link rel="stylesheet" href="{%static 'css/responsiveslides.css'%}">
+
+	<script src="{%static 'js/script.js'%}"></script> 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> {% endcomment %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="{%static 'css/all.min.css'%}">
+	<link rel="stylesheet" href="{%static 'css/owl.carousel.min.css'%}">
+	<link rel="stylesheet" href="{%static 'css/search.css' %}">
+	<style>
+		.searchresult{
+            margin-bottom:100px;
+            margin-left:5%;
+        }
+	</style>
+
+</head>
+<body>
+	<div class="clear"> </div>
+
+	{%include 'header.html'%}
+	<!----End-top-nav---->
+	<!----End-Header---->
+	<!--start-image-slider---->
+	<div class="clear"> </div>
+     {% if messages %}
+    {%for message in messages%}
+     <div class="alert-msg mt-4"><p {% if message.tags %} class="alert alert-{{message.tags}}" style="margin-top:-22px;" {% endif %} >{{message}}</p></div>
+    {%endfor%}   
+{% endif %} 
+    <div class="searchresult ">
+	<h2 class="mt-2">Search Results:</h2>
+
+    {%if allproduct|length <= 1%}
+    <p >You Search for - <b>{{search}}</b> - did not match any documents.</p>
+    Suggestions:<br>
+        <ol style="list-style:disc;" >
+    <li class="ml-5 mt-1">Make sure that all words are spelled correctly.</li>
+    <li class="ml-5 mt-1">Try different keywords.</li>
+    <li class="ml-5 mt-1">Try more general keywords.</li>
+    <li class="ml-5 mt-1">Try fewer keywords.</li>
+        </ol>
+    <img src="{%static 'images/search.gif'%}" style="width:500px;height:400px;">
+    {%else%}
+    <p>You Search for -<b> {{search}}</b> - We have found {{results}} results for your relevant search</p>
+   
+    </div>
+	<div class="catwise-display mt-0">
+		<div class="cat_list " >
+		  <h2 style="margin-left:20px;margin-bottom:10px;">Filters</h2>
+		  <h5 style="margin-left:20px;margin-bottom:10px;">Brands</h5>
+		  
+		  <a class="allproduct-show text-decoration-none pl-2"  href="../mobile?category_id={{i.id}}">All Products</a>
+		  {% for i in allcategory %}
+			  <div class="item  pt-1">
+				<a class="cat-name " href="../mobile?category_id={{i.id}}">{{i.categoryname}}</a>
+			  </div>
+			  {% endfor %}   
+			  <h5 style="margin-left:20px;margin-bottom:10px;" class="mt-4">Price</h5>
+			  <div class="filter-by-price">
+			  <a  class="price-filter" href="{% url 'mobiledata' 'below_10000'%}">Under ₹10,000</a>    
+			  <a class="price-filter"  href="{% url 'mobiledata' 'bet_10k-20k'%}">₹10,000 - ₹20,000</a>     
+			  <a class="price-filter"  href="{% url 'mobiledata' 'bet_20k-30k'%}">₹20,000 - ₹30,000</a>     
+			  <a class="price-filter"  href="{% url 'mobiledata' 'bet_30k-40k'%}">₹30,000 - ₹40,000</a>     
+			  <a class="price-filter"  href="{% url 'mobiledata' 'bet_40k-50k'%}">₹40,000 - ₹50,000</a>     
+			  <a class="price-filter"  href="{% url 'mobiledata' 'above_50k'%}">Above ₹50,000</a>     
+			  </div>
+			</div>
+		<div class="product-list">
+  
+		  <div class="row w-100" style="display:flex;">
+					  {% for i in allproduct %}
+					  <div class="col-md-5 mb-5 mr-5" style="display:flex;">
+						  <div class="card item-div">
+  
+							  <a class="item-link" style="color:black;" href="../productdetails?id={{i.id}}">
+								  <center >
+					<div class="image-zoom"><img style="transition: all 1s ease-in-out;" src="../pimage/{{i.productimage1}}" width="300px" height="300px"></img>
+					</div>
+					</center>
+								  <p class="item-name pt-4 ">{{i.productname}}</p>
+								  <span class="item-price">₹{{i.productprice}}.00</span>&nbsp;
+								  <del><span class="item-mrp">₹{{i.productmrp}}.00</span>
+								  </del>
+							  </a>
+						  </div>
+					  </div>
+					  {% endfor %}
+				  </div>
+  
+		</div>
+	  <div>
+	
+	{%endif%}
+
+</div>
+	<div class="clear" style="clear:both;"> </div>
+
+
+
+</body>
+
+</html>
